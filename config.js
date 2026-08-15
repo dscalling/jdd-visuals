@@ -29,7 +29,7 @@ const SITE = {
 
   hero: {
     eyebrow: "DESIGN & DIGITAL STUDIO",
-    title: "DEINE MARKE.<br><span>UNVERWECHSELBAR.</span>",
+    title: "DEINE BRAND.<br><span>REDESIGNEN.</span>",
     text:
       "Wir machen aus Ideen einen professionellen Auftritt – mit starken Logos, überzeugenden Thumbnails und modernen Websites, die Vertrauen schaffen und Kunden gewinnen.",
     primaryButton: "Projekt anfragen",
