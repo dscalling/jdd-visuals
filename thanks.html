@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05070b">
+  <meta name="description" content="Vielen Dank für deine Anfrage bei JDD Visuals.">
+  <title>Danke für deine Anfrage — JDD Visuals</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      overflow-x:hidden;
+      background:#05070b;
+      color:#f5f7fb;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 50% 42%,rgba(31,111,255,.13),transparent 34%),
+        radial-gradient(circle at 15% 85%,rgba(30,100,180,.08),transparent 28%);
+      z-index:0;
+    }
+
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.035;
+      z-index:20;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .page{
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:40px 20px;
+    }
+
+    .back{
+      position:fixed;
+      top:28px;
+      left:6vw;
+      z-index:10;
+      color:#777;
+      text-decoration:none;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .back:hover{color:#fff;transform:translateX(-3px)}
+
+    .card{
+      position:relative;
+      width:min(920px,100%);
+      min-height:620px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:80px clamp(25px,7vw,90px);
+      overflow:hidden;
+      border:1px solid rgba(89,123,157,.28);
+      border-radius:28px;
+      background:
+        linear-gradient(145deg,rgba(13,18,27,.94),rgba(5,7,11,.98));
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      width:620px;
+      height:620px;
+      border-radius:50%;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      background:radial-gradient(circle,rgba(27,119,255,.14),transparent 62%);
+      filter:blur(20px);
+      pointer-events:none;
+    }
+
+    .orb{
+      position:absolute;
+      width:520px;
+      height:520px;
+      border:1px solid rgba(49,132,255,.18);
+      border-radius:50%;
+      pointer-events:none;
+      animation:spin 18s linear infinite;
+    }
+
+    .orb:before,
+    .orb:after{
+      content:"";
+      position:absolute;
+      inset:55px;
+      border:1px solid rgba(49,132,255,.13);
+      border-radius:50%;
+      transform:rotate(55deg) scaleX(.45);
+    }
+
+    .orb:after{
+      transform:rotate(-55deg) scaleX(.45);
+    }
+
+    .orb-dot{
+      position:absolute;
+      top:15%;
+      left:8%;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#35a7ff;
+      box-shadow:0 0 10px #35a7ff,0 0 30px #1687ff,0 0 70px rgba(24,135,255,.8);
+    }
+
+    .brand{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:48px;
+    }
+
+    .brand strong{
+      font-size:25px;
+      font-weight:900;
+      letter-spacing:-2px;
+    }
+
+    .brand span{
+      color:#6f7885;
+      font-size:10px;
+      letter-spacing:5px;
+    }
+
+    .eyebrow{
+      position:relative;
+      z-index:2;
+      color:#3ca5ff;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+
+    .check{
+      position:relative;
+      z-index:2;
+      width:66px;
+      height:66px;
+      display:grid;
+      place-items:center;
+      margin-bottom:30px;
+      border:1px solid rgba(54,160,255,.5);
+      border-radius:50%;
+      color:#eaf5ff;
+      font-size:25px;
+      background:rgba(20,100,180,.08);
+      box-shadow:
+        0 0 25px rgba(30,130,255,.2),
+        0 0 70px rgba(30,130,255,.1);
+      animation:pulse 2.5s ease-in-out infinite;
+    }
+
+    h1{
+      position:relative;
+      z-index:2;
+      margin:0;
+      max-width:780px;
+      font-size:clamp(52px,8vw,100px);
+      line-height:.88;
+      letter-spacing:-6px;
+      font-weight:900;
+    }
+
+    h1 span{color:#2587ff}
+
+    .text{
+      position:relative;
+      z-index:2;
+      max-width:600px;
+      margin:30px auto 0;
+      color:#8a95a3;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .actions{
+      position:relative;
+      z-index:2;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:35px;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      min-height:50px;
+      padding:14px 24px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:800;
+      transition:.25s ease;
+    }
+
+    .button.primary{
+      color:#fff;
+      background:linear-gradient(100deg,#176dff,#42b8ff);
+      box-shadow:0 12px 45px rgba(25,120,255,.28);
+    }
+
+    .button.primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 55px rgba(25,120,255,.42);
+    }
+
+    .button.ghost{
+      color:#cbd4df;
+      border:1px solid #283443;
+      background:rgba(255,255,255,.015);
+    }
+
+    .button.ghost:hover{
+      color:#fff;
+      border-color:#49627c;
+      transform:translateY(-3px);
+    }
+
+    .meta{
+      position:relative;
+      z-index:2;
+      margin-top:48px;
+      color:#4f5a67;
+      font-size:9px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+    }
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{
+      0%,100%{box-shadow:0 0 25px rgba(30,130,255,.18),0 0 70px rgba(30,130,255,.08)}
+      50%{box-shadow:0 0 35px rgba(30,130,255,.35),0 0 90px rgba(30,130,255,.16)}
+    }
+
+    @media(max-width:600px){
+      .page{padding:22px 14px}
+      .back{position:absolute;top:20px;left:20px}
+      .card{
+        min-height:calc(100vh - 44px);
+        border-radius:22px;
+        padding:70px 22px 50px;
+      }
+      .orb{width:390px;height:390px}
+      .brand{margin-bottom:40px}
+      h1{letter-spacing:-3.5px}
+      .text{font-size:13px}
+      .actions{width:100%;flex-direction:column}
+      .button{width:100%}
+      .meta{margin-top:35px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .orb,.check{animation:none}
+      *{scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <main class="page">
+    <a class="back" href="./">← JDD Visuals</a>
+
+    <section class="card">
+      <div class="orb"><span class="orb-dot"></span></div>
+
+      <div class="brand">
+        <strong>JDD</strong>
+        <span>VISUALS</span>
+      </div>
+
+      <div class="check">✓</div>
+
+      <div class="eyebrow">Anfrage erfolgreich gesendet</div>
+
+      <h1>Danke für<br><span>deine Anfrage.</span></h1>
+
+      <p class="text">
+        Deine Nachricht ist erfolgreich bei JDD Visuals angekommen.
+        Wir schauen uns dein Projekt persönlich an und melden uns
+        schnellstmöglich bei dir.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="./">
+          Zurück zu JDD Visuals <span>↗</span>
+        </a>
+        <a class="button ghost" href="./#services">
+          Leistungen ansehen
+        </a>
+      </div>
+
+      <div class="meta">Design · Digital · Visuals</div>
+    </section>
+  </main>
+</body>
+</html>
